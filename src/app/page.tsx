@@ -1,7 +1,6 @@
-// src/app/page.tsx
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
 import BookGrid from "./components/BookGrid";
 import { books } from "./data/books";
 
@@ -15,14 +14,29 @@ export default function HomePage() {
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Welcome Section */}
-      <section className="text-center bg-orange-100 p-8 rounded-lg mb-12 shadow-md">
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-2">
-          Welcome to the Amana Bookstore!
-        </h1>
-        <p className="text-lg text-gray-600">
-          1 Your one-stop shop for the best books. Discover new worlds and
-          adventures.
-        </p>
+      <section className="relative w-full h-[400px] mb-12 rounded-lg overflow-hidden shadow-md">
+        {/* Background Image */}
+        <Image
+          src="/images/books-hero.jpg"
+          alt="Books Hero"
+          fill
+          className="object-cover w-full h-full filter blur-sm scale-105"
+          priority
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Text Content */}
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
+          <h1 className="text-4xl font-extrabold text-white mb-2">
+            Welcome to the Amana Bookstore!
+          </h1>
+          <p className="text-lg text-gray-200 max-w-xl">
+            Your one-stop shop for the best books. Discover new worlds and
+            adventures.
+          </p>
+        </div>
       </section>
 
       {/* Book Grid */}
