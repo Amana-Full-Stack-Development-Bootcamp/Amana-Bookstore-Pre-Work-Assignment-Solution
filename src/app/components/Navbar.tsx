@@ -1,6 +1,7 @@
 // src/app/components/Navbar.tsx
 "use client";
 
+import Image from "next/image"; // <-- added for icon
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -33,14 +34,22 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className="shadow-md fixed w-full top-0 z-10 p-4">
+    <nav className="shadow-md fixed w-full top-0 z-10 p-4 bg-white">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold cursor-pointer">
-          Amana Bookstore
+        <Link href="/" className="flex items-center space-x-2 cursor-pointer">
+          {/* Icon from public folder */}
+          <Image
+            src="/images/ammana-icon.png"
+            alt="Amana Icon"
+            width={60}
+            height={140}
+            className="rounded-2xl"
+          />
+          <span className="text-2xl font-bold">Amana Bookstore</span>
         </Link>
 
         <div className="flex items-center space-x-6">
-          {/* Links */}
+          {/* Navigation Links */}
           <Link
             href="/"
             className={`cursor-pointer ${
