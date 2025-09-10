@@ -1,6 +1,7 @@
+import { ThemeProvider } from "@/context/ThemeContext";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Amana Bookstore',
-  description: 'A modern online bookstore built with Next.js and Tailwind CSS.',
+  title: "Amana Bookstore",
+  description: "A modern online bookstore built with Next.js and Tailwind CSS.",
 };
 
 export default function RootLayout({
@@ -31,9 +32,13 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 pt-16`}>
-        <Navbar />
-        <main>{children}</main>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 pt-16`}
+      >
+        <ThemeProvider>
+          <Navbar />
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
