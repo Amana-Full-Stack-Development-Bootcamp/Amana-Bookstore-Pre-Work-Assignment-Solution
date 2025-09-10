@@ -1,7 +1,6 @@
 // src/app/components/Navbar.tsx
 "use client";
 
-import { colors } from "@/context/ThemeContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,7 +8,6 @@ import { CartItem } from "../types";
 
 const Navbar: React.FC = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
-  const [themeColor, setThemeColor] = useState("red"); // Default color
   const pathname = usePathname();
 
   // Update cart count from localStorage
@@ -32,14 +30,6 @@ const Navbar: React.FC = () => {
     updateCartCount();
     window.addEventListener("cartUpdated", updateCartCount);
     return () => window.removeEventListener("cartUpdated", updateCartCount);
-  }, []);
-
-  // Load saved color on mount
-  useEffect(() => {
-    const savedColor = localStorage.getItem("themeColor");
-    if (savedColor && colors.includes(savedColor)) {
-      setThemeColor(savedColor);
-    }
   }, []);
 
   return (
@@ -72,19 +62,6 @@ const Navbar: React.FC = () => {
               </span>
             )}
           </Link>
-
-          {/* Color selector dropdown */}
-          <select
-            value={themeColor}
-            onChange={(e) => setThemeColor(e.target.value)}
-            className="p-1 rounded border"
-          >
-            {colors.map((color) => (
-              <option key={color} value={color}>
-                {color.charAt(0).toUpperCase() + color.slice(1)}
-              </option>
-            ))}
-          </select>
         </div>
       </div>
     </nav>
