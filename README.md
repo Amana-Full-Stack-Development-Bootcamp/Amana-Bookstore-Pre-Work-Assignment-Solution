@@ -1,3 +1,7 @@
+<img width="1024" height="1024" alt="bookstore" src="https://github.com/user-attachments/assets/e3976408-7d30-47c3-a80e-c8499a5bf497" />
+
+
+
 # Amana Bookstore – Pre-Work Assignment Solution
 
 Welcome to the official solution repository for the **Pre-Work Assignment** of the Amana Full-Stack Development Bootcamp (Unit 00: Orientation). 
